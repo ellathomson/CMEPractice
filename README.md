@@ -7,8 +7,8 @@ Work here was completed largely by Ella Thomson and Chris Cadonic for practicing
 
 ## SSA
 
-The stochastic simulation algorithm (SSA) was setup as described in Gillespie (2007), and run using the bare-bones design for generating *&#964* and *j*. The algorithm was described for an arbitrary reaction set involving *x1*, *x2* and *y*.
+The stochastic simulation algorithm (SSA) was setup as described in Gillespie (2007), and run using the bare-bones design for generating *&#964;* and *j*. The algorithm was described for an arbitrary reaction set involving *x1*, *x2* and *y*.
 
-## *&#964*-leaping
+## *&#964;*-leaping
 
-Practice incorporating *&#964*-leaping into the ssa to facilitate efficient simulation for larger and/or more complicated systems. Different schemes for *&#964* generation were tested and compared.
+Practice incorporating *&#964;*-leaping into the ssa to facilitate efficient simulation for larger and/or more complicated systems. Different schemes for *&#964;* generation were tested and compared.
