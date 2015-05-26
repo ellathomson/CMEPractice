@@ -39,11 +39,14 @@ rxn = {f,g,h}; % 3 different function to represent 3 different a's
 all_rxns = [f,g,h]; % 3 different functions to represent 3 different a's 
 a_0 = single(sum(all_rxns(species1,species2,species3))); % a0 is sum of all aj's
 
+
+
 for j_prime = 1:numReactions %calculate f
     rxn_prime_func = rxn{j_prime}; % choose function for current reaction
     for j = 1:numReactions
         rxn_func = rxn{j}; % pick the j-th reaction
         
+        tic
         for i = 1:numSpecies % loop to calculate and evaluate derivatives 
             %first calculated the  derivative , then evaluate it
             
@@ -57,9 +60,11 @@ for j_prime = 1:numReactions %calculate f
             deriv{i,j} = diff(rxn_func,all_species(i));
             
         end
+        toc
         all_f(j,j_prime) = sum(nummat(:,j)); % sum of f's for each reaction
     end
 end
+
 
 for j=1:numReactions %calculate mean and sigma
     % calculate mu for each reaction
@@ -72,5 +77,6 @@ for j=1:numReactions %calculate mean and sigma
     
     minima(j) = min(first_term(j),second_term(j)); % find minimum between delta nad mu for each reaction
 end
+
 
 tau = min(minima); % tau is the minimum 
