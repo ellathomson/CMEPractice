@@ -1,4 +1,4 @@
-function [tau] = TauLeapGeneration(numSpecies, numReactions, X0)
+function [tau] = TauLeapGeneration(numSpecies, numReactions, V, X0)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Evaluates tau for a given number of species and reactions, with a set
@@ -35,35 +35,25 @@ g(x1,x2,y) = c2*x1*y; % a for reaction 2
 h(x1,x2,y) = (1/2)*c3*(x2*(x2-1)); % a for reaction 3
 
 all_species = [x1,x2,y]; % vector of all species involved in reaction 
-rxn = {f,g,h}; % 3 different function to represent 3 different a's
+rxns = {f,g,h}; % 3 different function to represent 3 different a's
 all_rxns = [f,g,h]; % 3 different functions to represent 3 different a's 
 a_0 = single(sum(all_rxns(species1,species2,species3))); % a0 is sum of all aj's
 
 
+for i = 1:numSpecies % loop to calculate and evaluate derivatives 
+    %first calculated the  derivative , then evaluate it
 
-for j_prime = 1:numReactions %calculate f
-    rxn_prime_func = rxn{j_prime}; % choose function for current reaction
-    for j = 1:numReactions
-        rxn_func = rxn{j}; % pick the j-th reaction
-        
-        tic
-        for i = 1:numSpecies % loop to calculate and evaluate derivatives 
-            %first calculated the  derivative , then evaluate it
-            
-            % differentiate the function 
-            func(x1,x2,y) = diff(rxn_func,all_species(i)); 
-            
-            % store the value of the evaluated derivative
-            nummat(i,j) = func(species1,species2,species3)*changes(i,j_prime);
-            
-            %just store the calculated deriv
-            deriv{i,j} = diff(rxn_func,all_species(i));
-            
-        end
-        toc
-        all_f(j,j_prime) = sum(nummat(:,j)); % sum of f's for each reaction
-    end
+    % differentiate the function 
+    derivs{i} = diff([rxns{1:end}],all_species(i)); 
+
 end
+
+all_derivs = [derivs{1:end}];
+all_evaluations = single(all_derivs(species1,species2,species3));
+
+%
+% ADD CODE
+%
 
 
 for j=1:numReactions %calculate mean and sigma

@@ -28,7 +28,7 @@ for n = 1:num_sims
     while count <max_rx;
         %[aj, a0] = AGeneration(X0, c); % calculate the current aj's and a0
         
-        [tau] = TauLeapGeneration (num_species,num_rx,X0); % calculate tau
+        [tau] = TauLeapGeneration (num_species,num_rx,V, X0); % calculate tau
         
         time = time + tau; % find new time by adding tau to previous time
         times = [times time]; % add new time to list of times
