@@ -51,6 +51,7 @@ end
 all_derivs = [derivs{1:end}];
 all_evaluations = single(all_derivs(species1,species2,species3));
 
+% calculate 9 f values for all j, j' combinations
 fs = zeros(1,9);
 fs(1:1:3) = [sum(all_evaluations(1:3:7) .* V(1:3:7)), ...
     sum(all_evaluations(1:3:7) .* V(2:3:8)),...
@@ -61,17 +62,20 @@ fs(4:1:6) = [sum(all_evaluations(2:3:8) .* V(1:3:7)),...
 fs(7:1:9) = [sum(all_evaluations(3:3:9) .* V(1:3:7)),...
     sum(all_evaluations(3:3:9) .* V(2:3:8)),...
     sum(all_evaluations(3:3:9) .* V(3:3:9))];
-
+ 
+ % calculate mean  (mu) for each j value
 means = zeros(1,3);
 means(1:1:3) = [sum(fs(1:3:7) .* single(all_rxns(species1, species2,species3))),...
     sum(fs(2:3:8) .* single(all_rxns(species1, species2,species3))),...
     sum(fs(3:3:9) .* single(all_rxns(species1, species2,species3)))];
 
+% calculate variance for each j value
 vars= zeros(1,3);
 vars(1:1:3) = [sum((fs(1:3:7)).^2 .* single(all_rxns(species1, species2,species3))),...
     sum((fs(2:3:8)).^2 .* single(all_rxns(species1, species2,species3))),...
     sum((fs(3:3:9)).^2 .* single(all_rxns(species1, species2,species3)))];
-
+ 
+% tau is the minimum of the first terms and second terms 
 first_term = zeros(1, 3);
 second_term = zeros(1,3);
 first_term(1:1:3) = (epsilon*a_0)./(abs(means(1:1:3)));
