@@ -10,7 +10,7 @@ function [tau] = TauLeapVectorized(numSpecies, numReactions, V, X0)
 % specifying less terms). Commenting for vectorization. Current run time is
 % approximately 1.6 seconds 
 
-epsilon = 0.5; % error tolerance (larger epsilon = larger tau) (0<epsilon<1) 
+epsilon = 0.03; % error tolerance (larger epsilon = larger tau) (0<epsilon<1) 
 
 species1 = X0(1); % amount of x1
 species2 = X0(2); % amount of x2

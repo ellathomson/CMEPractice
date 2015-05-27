@@ -33,6 +33,8 @@ for n = 1:num_sims
     while count <max_rx;
         %[aj, a0] = AGeneration(X0, c); % calculate the current aj's and a0
         
+%         calc_L(X0);
+        
         [tau] = TauLeapVectorized (num_species,num_rx,V, X0); % calculate tau
         
         time = time + tau; % find new time by adding tau to previous time
@@ -46,7 +48,7 @@ for n = 1:num_sims
         
         count = time; % increment number of reactions
         
-        
+
         
         %if ((X0(1)==0) || (X0(2)==0) || (X0(3)==0)) % check if any substances are depleted
         %   count = max_rx + 1; % will stop the while loop from running again
@@ -93,11 +95,7 @@ for n = 1:num_sims
         xlabel('Time')
         ylabel('Y Amount')
         hold on
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> a4d53fb61d410779e60cae911a7eb63ce623d8ab
     end
 end
 toc
