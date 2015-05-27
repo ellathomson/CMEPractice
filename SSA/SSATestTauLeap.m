@@ -93,7 +93,11 @@ for n = 1:num_sims
         xlabel('Time')
         ylabel('Y Amount')
         hold on
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> a4d53fb61d410779e60cae911a7eb63ce623d8ab
     end
 end
 toc
