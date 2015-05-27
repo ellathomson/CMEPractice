@@ -59,36 +59,38 @@ for n = 1:num_sims
     % The below code is for plotting, which only occurs is no substances have
     % run out during the preset number of reactions.
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    type_plots_b = {'b-', 'b*', 'bd', 'bp', 'bh'};
-    type_plots_r = {'r-', 'r*', 'rd', 'rp', 'rh'};
-    type_plots_k = {'k-', 'k*', 'kd', 'kp', 'kh'};
+    symbols = {'*-','o-','h-','p-','.-','x-','s-','d-','>-','^-','<-','+-'};
+%     colours = ['y','m','r','b','g','c','k'];
     
     if go_ahead ==1 % check if plotting will occur
-        figure(1) 
-    
+        figure(1)
+        
         % first plot displays x1 amount vs time
         subplot(3,1,1)
-        plot(times, X(:,1), type_plots_b{n})
+        plot(times, X(:,1), symbols{ceil(length(symbols)*rand)},'color',...
+            'b','markersize',12)
         title('X1 Amount vs Time')
         xlabel('Time')
         ylabel('X1 Amount')
         hold on
-
+        
         % second plot displays x2 amount vs time
         subplot(3,1,2)
-        plot(times, X(:,2), type_plots_r{n})
+        plot(times, X(:,2),symbols{ceil(length(symbols)*rand)},'color',...
+            'r','markersize',12)
         title('X2 Amount vs Time')
         xlabel ('Time')
         ylabel('X2 Amount')
         hold on
-
-        % third plot displays y amount vs time 
+        
+        % third plot displays y amount vs time
         subplot(3,1,3)
-        plot(times,X(:,3), type_plots_k{n})
-        title('Y Amount vs Time') 
+        plot(times,X(:,3), symbols{ceil(length(symbols)*rand)},'color',...
+            'g','markersize',12)
+        title('Y Amount vs Time')
         xlabel('Time')
-        ylabel('Y Amount') 
-        hold on 
+        ylabel('Y Amount')
+        hold on
 
     end
 end
