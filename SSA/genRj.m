@@ -5,10 +5,6 @@ function [Rjs] = genRj (X0, V)
 % outputs a variable that tells the main program to call the tau generation
 % function for critical reactions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-<<<<<<< HEAD
-=======
-
->>>>>>> a6d36d7efb5791b51f1e1a794f8c436d3456ca5d
 
 %% setup values
 % the minimum value of lj for rj to be considered a critical reaction. This
@@ -92,14 +88,3 @@ for x = 1:3 % generates an lj value for each reaction
 end
 
 Rjs = single(Ljs < nc); % vector of critical reactions
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The goto variable will be an output that is used in the main SSA program
-% to determine whethe to go to the tau leap generation for critical
-% equations or for no critical equations. If it is 0 it means there are no
-% critical reactions, if it is 1 there are crtical equations. The rjs
-% values will also be outputed to detect which reactions are critical 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    
-
