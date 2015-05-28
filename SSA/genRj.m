@@ -10,6 +10,7 @@ close all
 clear all
 clc 
 
+%% setup values
 % the minimum value of lj for rj to be considered a critical reaction. This
 % can be a whole number between 2-20. It's usually equal to 10
 nc = 10; 
@@ -43,13 +44,11 @@ all_rxns = [f,g,h]; % 3 different functions to represent 3 different a's
 % find ajs for each reaction and store in a vector
 aj = single(all_rxns(species1,species2,species3));
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Check elements
 % check_elements is used to keep track of which elements in the matrix v
-% will need to be check to determine whether they are critical. If an aj is
+% will need to be checked to determine whether they are critical. If an aj is
 % negative the entire row for that reaction will be zeroed. If Vij is
 % positive, then the one element will be zeroed. 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 % Find which reactions have negative aj's, zero their whole row
 first_row = aj>0;
@@ -66,6 +65,7 @@ indexes = find(first_row);
 % 0 in check_element
 check_elements([indexes], :) = V([indexes], :)<0;
 
+%% Determine the critical reactions
 % ones in Rjs indicate that these reactions are critical reactions
 Rjs = zeros(1,3);
 
