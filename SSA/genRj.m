@@ -5,6 +5,10 @@ function [Rjs] = genRj (X0, V)
 % outputs a variable that tells the main program to call the tau generation
 % function for critical reactions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+<<<<<<< HEAD
+=======
+
+>>>>>>> a6d36d7efb5791b51f1e1a794f8c436d3456ca5d
 
 %% setup values
 % the minimum value of lj for rj to be considered a critical reaction. This
@@ -40,7 +44,13 @@ all_rxns = [f,g,h]; % 3 different functions to represent 3 different a's
 % find ajs for each reaction and store in a vector
 aj = single(all_rxns(species1,species2,species3));
 
+<<<<<<< HEAD
 %% Check elements
+=======
+disp(all_rxns)
+disp(aj)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+>>>>>>> a6d36d7efb5791b51f1e1a794f8c436d3456ca5d
 % check_elements is used to keep track of which elements in the matrix v
 % will need to be checked to determine whether they are critical. If an aj is
 % negative the entire row for that reaction will be zeroed. If Vij is
