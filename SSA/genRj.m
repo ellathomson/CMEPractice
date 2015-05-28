@@ -1,4 +1,4 @@
-%function [Rjs] = genRj (X0, V)
+function [Rjs] = genRj (X0, V)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % generates Ls values for each reaction in order to determine whether the
 % reaction is critical. If there are critical reactions, the function
